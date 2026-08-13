@@ -1,0 +1,17 @@
+body {
+    background-color: azure;
+}
+
+.name-container {
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    margin-top: 7vh;
+    padding: 10px;
+    height: 550px;
+    background-color: grey;
+    justify-content: space-between;
+    border: 3px solid black;
+}
