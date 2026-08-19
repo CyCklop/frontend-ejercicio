@@ -12,6 +12,7 @@
       crossorigin="anonymous"
     />
   </head>
+
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -25,7 +26,7 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="calc.html">Calculadora</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,6 +51,7 @@
       </div>
     </nav>
   </header>
+
   <body>
     <div class="name-container">
       <h1>Muse</h1>
@@ -83,7 +85,67 @@
           </div>
         </div>
     </div>
+
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>#</th>
+          <th>Parametro</th>
+          <th>Valor</th>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td>Compra</td>
+          <td>$<span id="valorCompra"></span></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Venta</td>
+          <td>$<span id="valorVenta"></span></td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>Nombre</td>
+          <td><span id="nombreMoneda"></span></td>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td>Divisa</td>
+          <td><span id="nombreDivisa"></span></td>
+        </tr>
+
+        <tr>
+          <td>5</td>
+          <td>Fecha</td>
+          <td><span id="fecha"></span></td>
+        </tr>
+
+        <tr>
+          <td>6</td>
+          <td>Dolar Obs</td>
+          <td><span id="valorCierre"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      fetch('https://cl.dolarapi.com/v1/cotizaciones/usd')
+      .then(response => response.json())
+      .then(datos => {
+        document.getElementById("valorCompra").innerHTML = datos.compra;
+        document.getElementById("valorVenta").innerHTML = datos.venta;
+        document.getElementById("nombreMoneda").innerHTML = datos.moneda;
+        document.getElementById("nombreDivisa").innerHTML = datos.nombre;
+        document.getElementById("fecha").innerHTML = datos.fechaActualizacion.substring(0, 10);
+        document.getElementById("valorCierre").innerHTML = datos.ultimoCierre;
+      })
+    </script>
   </body>
+
   <footer>
 
   </footer>
